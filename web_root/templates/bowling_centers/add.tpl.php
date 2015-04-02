@@ -17,7 +17,7 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
         <span class="error"><?= $_TEMPLATES['vars']['form_errors']['file'] ?></span>
     <? endif; ?>
     
-    <label for="notes">Notes:</label>
+    <label for="location">Location:</label>
     <input type="text" maxlength="100" name="location" value="<?=$_POST['location']?>" />
     <? if (isset($_TEMPLATES['vars']['form_errors']['location'])): ?>
       <span class="error"><?= $_TEMPLATES['vars']['form_errors']['location'] ?></span>
