@@ -183,6 +183,13 @@
                                     <li><a href="/tracker/admin/bowling_centers/edit_bowling_center.php">Edit Bowling Centers</a></li>
                                 </ul>
                             </li>
+                            <li><a href="/tracker/admin/bowling_teams/view_team.php">Teams<span class="caret"></span></a>
+                                <ul class="children">
+                                    <li><a href="/tracker/admin/bowling_teams/add_team.php">Add Teams</a></li>
+                                    <li><a href="/tracker/admin/bowling_teams/view_team.php">View Teams</a></li>
+                                    <li><a href="/tracker/admin/bowling_teams/edit_team.php">Edit Teams</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                     <span class="dept">Cougar Bowling Club & Team</span>

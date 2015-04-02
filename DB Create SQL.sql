@@ -104,18 +104,18 @@ CREATE TABLE IF NOT EXISTS `3380project`.`sets` (
   CONSTRAINT `center`
     FOREIGN KEY (`center_id`)
     REFERENCES `3380project`.`centers` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
   CONSTRAINT `pattern`
     FOREIGN KEY (`pattern_id`)
     REFERENCES `3380project`.`pattern` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
   CONSTRAINT `event`
     FOREIGN KEY (`event_id`)
     REFERENCES `3380project`.`events` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
@@ -137,13 +137,13 @@ CREATE TABLE IF NOT EXISTS `3380project`.`games` (
   CONSTRAINT `set`
     FOREIGN KEY (`set_id`)
     REFERENCES `3380project`.`sets` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `user`
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `user2`
     FOREIGN KEY (`user_id`)
     REFERENCES `3380project`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
@@ -177,18 +177,18 @@ CREATE TABLE IF NOT EXISTS `3380project`.`balls_users` (
   CONSTRAINT `surface`
     FOREIGN KEY (`surface_type_id`)
     REFERENCES `3380project`.`surface_types` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
   CONSTRAINT `ball`
     FOREIGN KEY (`ball_id`)
     REFERENCES `3380project`.`balls` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
   CONSTRAINT `user`
     FOREIGN KEY (`user_id`)
     REFERENCES `3380project`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
@@ -205,8 +205,8 @@ CREATE TABLE IF NOT EXISTS `3380project`.`teams` (
   CONSTRAINT `users`
     FOREIGN KEY (`owner_id`)
     REFERENCES `3380project`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
@@ -272,41 +272,41 @@ CREATE TABLE IF NOT EXISTS `3380project`.`frames` (
   INDEX `ball1_idx` (`b1_ball_id` ASC),
   INDEX `ball2_idx` (`b2_ball_id` ASC),
   INDEX `ball3_idx` (`b3_ball_id` ASC),
-  CONSTRAINT `user`
+  CONSTRAINT `user3`
     FOREIGN KEY (`user_id`)
     REFERENCES `3380project`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `game`
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `game1`
     FOREIGN KEY (`game_id`)
     REFERENCES `3380project`.`games` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `center`
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `center1`
     FOREIGN KEY (`center_id`)
     REFERENCES `3380project`.`centers` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `pattern`
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `pattern1`
     FOREIGN KEY (`pattern_id`)
     REFERENCES `3380project`.`pattern` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
   CONSTRAINT `ball1`
     FOREIGN KEY (`b1_ball_id`)
     REFERENCES `3380project`.`balls_users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
   CONSTRAINT `ball2`
     FOREIGN KEY (`b2_ball_id`)
     REFERENCES `3380project`.`balls_users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
   CONSTRAINT `ball3`
     FOREIGN KEY (`b3_ball_id`)
     REFERENCES `3380project`.`balls_users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
@@ -318,16 +318,16 @@ CREATE TABLE IF NOT EXISTS `3380project`.`teams_users` (
   `user_id` INT NOT NULL,
   PRIMARY KEY (`team_id`, `user_id`),
   INDEX `user_idx` (`user_id` ASC),
-  CONSTRAINT `team`
+  CONSTRAINT `team3`
     FOREIGN KEY (`team_id`)
     REFERENCES `3380project`.`teams` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `user`
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+  CONSTRAINT `user3`
     FOREIGN KEY (`user_id`)
     REFERENCES `3380project`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
