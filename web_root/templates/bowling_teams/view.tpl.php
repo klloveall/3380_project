@@ -2,25 +2,19 @@
 require_once $_TEMPLATES['location'] . 'header.tpl.php';
 ?>
 
-<html>
+<h1><b>Team Number </b></h1>
 
-<head>
-<title> Teams </title>
-</head>
+<p><b>Team Id:</b> <?= $_TEMPLATES['vars']['teams_id'] ?></p>
+<p><b>Team Name:</b> <?= $_TEMPLATES['vars']['name'] ?></p> 
+<p><b>Team Owner:</b> <?= $_TEMPLATES['vars']['owners'] ?></p>
+<p><b>Team Notes:</b> <?= $_TEMPLATES['vars']['notes'] ?></p>
+<p><b>Team Members:</b>
 
-<body>
-<h1><b>Team Names</b></h1>
+<!--<? //while($data_two= $results_two->fetch_array()) {?>
+    <p><b>Team Member:</b><?= $data_two['preferred_name'] ?> <?= $data_two['last_name'] ?></p> 
+<? //} ?>-->
 
-<? while ($data = $results->fetch_array()) {?>
-
-<p><b>Team Id:</b><?=$_Post['teams_id']?></p>
-<p><b>Team Name:</b><a href="team_information.php?id=<?=$_Post[teams_id]?>"><?=$_Post['teamname']?></a></p>  
-  
-<? } ?>
-
-</body>
-</html>        
-
+<a href="?">Back to listing</a>
 
 <?php
 require_once $_TEMPLATES['location'] . 'footer.tpl.php';

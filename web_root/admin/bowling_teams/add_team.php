@@ -13,16 +13,15 @@ if (isset($_POST['submit'])) {
         require_once $_TEMPLATES['location'] . 'bowling_teams/add.tpl.php';
         exit();
     }
-//    move_uploaded_file($_FILES['userfile']['tmp_name'], '../../uploads/');
 
     $query = "
         INSERT INTO `teams` (
             `name`,
-            `owner`,
+            `owner_id`,
             `notes`
         ) VALUES (
             '" . $_POST['team_name'] . "',
-            '" . $_POST['owner'] . "',
+            NULL,
             '" . $_POST['notes'] . "'
         )";
     $result = mysqli_query($_DB, $query);
