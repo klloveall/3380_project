@@ -161,19 +161,26 @@
                     <nav class="nav-primary" role="navigation">
                         <ul class="parents">
 
-                            <li><a href="/tracker/index.html">Home</a></li>
-                            <li><a href="/tracker/admin/bowlers/view_bowlers.php">Bowlers <span class="caret"></span></a>
+                            <li><a href="/tracker/index.php">Home</a></li>
+<!--                            <li><a href="/tracker/admin/bowlers/view_bowlers.php">Bowlers <span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/bowlers/add_bowler.php">Add New Bowler</a></li>
                                     <li><a href="/tracker/admin/bowlers/view_bowler.php">View Bowlers</a></li>
                                     <li><a href="/tracker/admin/bowlers/edit_bowler.php">Edit Bowlers</a></li>
                                 </ul>
-                            </li>
+                            </li>-->
                             <li><a href="/tracker/admin/oil_patterns/view_oil_patterns.php">Oil Patterns <span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/oil_patterns/add_oil_pattern.php">Add Oil Pattern</a></li>
                                     <li><a href="/tracker/admin/oil_patterns/view_oil_pattern.php">View Oil Pattern</a></li>
                                     <li><a href="/tracker/admin/oil_patterns/edit_oil_pattern.php">Edit Oil Pattern</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/tracker/admin/bowling_centers/view_bowling_center.php">Bowling Centers<span class="caret"></span></a>
+                                <ul class="children">
+                                    <li><a href="/tracker/admin/bowling_centers/add_bowling_center.php">Add Bowling Centers</a></li>
+                                    <li><a href="/tracker/admin/bowling_centers/view_bowling_center.php">View Bowling Centers</a></li>
+                                    <li><a href="/tracker/admin/bowling_centers/edit_bowling_center.php">Edit Bowling Centers</a></li>
                                 </ul>
                             </li>
                         </ul>

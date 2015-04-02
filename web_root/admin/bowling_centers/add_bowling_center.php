@@ -29,5 +29,6 @@ if (isset($_POST['submit'])) {
         exit();
     }
     $_TEMPLATES['vars']['success'] = "Bowling Center added successfully";
+    unset($_POST);
 }
 require_once $_TEMPLATES['location'] . 'bowling_centers/add.tpl.php';

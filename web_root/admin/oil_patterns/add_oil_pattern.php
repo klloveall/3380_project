@@ -31,5 +31,6 @@ if (isset($_POST['submit'])) {
         exit();
     }
     $_TEMPLATES['vars']['success'] = "Oil pattern added successfully";
+    unset($_POST);
 }
 require_once $_TEMPLATES['location'] . 'oil_patterns/add.tpl.php';

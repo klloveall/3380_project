@@ -23,12 +23,10 @@ if (isset($_GET['id'])) {
             require_once $_TEMPLATES['location'] . 'bowling_centers/edit.tpl.php';
             exit();
         }
-//        if (isset($_FILES['userfile']['tmp_name']))
-//        move_uploaded_file($_FILES['userfile']['tmp_name'], '../../uploads/');
         $query = "
         UPDATE `centers` SET 
             `name` = '" . $_POST['center_name'] . "',
-            `location` - '" . $_POST['location'] "',
+            `location` - '" . $_POST['location'] . "',
             `notes` = '" . $_POST['notes'] . "'
         WHERE `id` = '" . $_GET['id'] . "'
         ";
