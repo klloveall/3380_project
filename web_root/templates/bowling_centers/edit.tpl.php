@@ -4,15 +4,9 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
 <h1>Edit Bowling Center</h1>
 <form action="" method="post">
     <label for="name">Bowling center Name:</label>
-    <input type="text" maxlength="50" name="bowling_center_name" value="<?=$_POST['bowling_center_name']?>" />
-    <? if (isset($_TEMPLATES['vars']['form_errors']['bowling_center_name'])): ?>
-        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['bowling_center_name'] ?></span>
-    <? endif; ?>
-
-    <label for="file">PDF File:</label>
-    <input type="file" name="file" />
-    <? if (isset($_TEMPLATES['vars']['form_errors']['file'])): ?>
-        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['file'] ?></span>
+    <input type="text" maxlength="50" name="center_name" value="<?=$_POST['center_name']?>" />
+    <? if (isset($_TEMPLATES['vars']['form_errors']['center_name'])): ?>
+        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['center_name'] ?></span>
     <? endif; ?>
     
     <label for="location">Location:</label>
