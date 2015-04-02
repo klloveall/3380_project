@@ -169,7 +169,7 @@
                                     <li><a href="/tracker/admin/bowlers/edit_bowler.php">Edit Bowlers</a></li>
                                 </ul>
                             </li>-->
-                            <li><a href="/tracker/admin/oil_patterns/view_oil_patterns.php">Oil Patterns <span class="caret"></span></a>
+                            <li><a href="/tracker/admin/oil_patterns/view_oil_pattern.php">Oil Patterns <span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/oil_patterns/add_oil_pattern.php">Add Oil Pattern</a></li>
                                     <li><a href="/tracker/admin/oil_patterns/view_oil_pattern.php">View Oil Pattern</a></li>
@@ -188,6 +188,13 @@
                                     <li><a href="/tracker/admin/bowling_teams/add_team.php">Add Teams</a></li>
                                     <li><a href="/tracker/admin/bowling_teams/view_team.php">View Teams</a></li>
                                     <li><a href="/tracker/admin/bowling_teams/edit_team.php">Edit Teams</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/tracker/admin/events/view_event.php">Events<span class="caret"></span></a>
+                                <ul class="children">
+                                    <li><a href="/tracker/admin/events/add_event.php">Add Event</a></li>
+                                    <li><a href="/tracker/admin/events/view_event.php">View Event</a></li>
+                                    <li><a href="/tracker/admin/events/edit_event.php">Edit Event</a></li>
                                 </ul>
                             </li>
                         </ul>
