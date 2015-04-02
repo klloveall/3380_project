@@ -2,7 +2,7 @@
 require_once '../../includes/includes.php';
 if (isset($_GET['id'])) {
     if (isset($_GET['delete'])) {
-        $query = "DELETE FROM `pattern` WHERE `id` = '" . $_GET['id'] . "'";
+        $query = "DELETE FROM `centers` WHERE `id` = '" . $_GET['id'] . "'";
         mysqli_query($_DB, $query);
         if ($result === false) {
             echo "DB ERROR: " . mysqli_error($_DB);
@@ -20,15 +20,14 @@ if (isset($_GET['id'])) {
             foreach ($errors as $field => $error_message) {
                 $_TEMPLATES['vars']['form_errors'][$field] = $error_message;
             }
-            require_once $_TEMPLATES['location'] . 'oil_patterns/edit.tpl.php';
+            require_once $_TEMPLATES['location'] . 'bowling_centers/edit.tpl.php';
             exit();
         }
 //        if (isset($_FILES['userfile']['tmp_name']))
 //        move_uploaded_file($_FILES['userfile']['tmp_name'], '../../uploads/');
         $query = "
-        UPDATE `bowling_center` SET 
+        UPDATE `centers` SET 
             `name` = '" . $_POST['pattern_name'] . "',
-            `filepath` = '" . $_POST['file'] . "',
             `location` - '" . $_POST['location'] "',
             `notes` = '" . $_POST['notes'] . "'
         WHERE `id` = '" . $_GET['id'] . "'
@@ -44,10 +43,9 @@ if (isset($_GET['id'])) {
         $query = "
         SELECT
             `name`,
-            `filepath`,
             `location`,
             `notes`
-        FROM   `bowling_center`
+        FROM   `centers`
         WHERE `id` = '" . $_GET['id'] . "'
         ";
         $result = mysqli_query($_DB, $query);
@@ -57,10 +55,9 @@ if (isset($_GET['id'])) {
         }
         $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $_POST['bowling_center_name'] = $data['name'];
-        $_POST['filepath'] = $data['filepath'];
         $_POST['location'] = $data['location']; 
         $_POST['notes'] = $data['notes'];
-        require_once $_TEMPLATES['location'] . 'oil_patterns/edit.tpl.php';
+        require_once $_TEMPLATES['location'] . 'bowling_centers/edit.tpl.php';
         exit();
     }
 } else {
@@ -74,7 +71,7 @@ function display_bowling_center_listing() {
             `name`,
             `location`,
             `notes`
-        FROM `bowling_center`
+        FROM `centers`
         WHERE 1";
     $result = mysqli_query($_DB, $query);
     if ($result === false) {
@@ -82,8 +79,8 @@ function display_bowling_center_listing() {
         exit();
     }
     while ($data = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $_TEMPLATES['vars']['bowling_center'][] = $data;
+        $_TEMPLATES['vars']['centers'][] = $data;
     }
-    require_once $_TEMPLATES['location'] . 'oil_patterns/listing.tpl.php';
+    require_once $_TEMPLATES['location'] . 'bowling_centers/listing.tpl.php';
     exit();
 }
