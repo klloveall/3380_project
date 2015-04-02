@@ -2,8 +2,8 @@
   require_once '../../includes/includes.php';
  
 if (isset($_POST['submit'])) {
-    if (!$_POST['bowling_center_name']) {
-        $errors['bowling_center_name'] = "Bowling center name required";
+    if (!$_POST['center_name']) {
+        $errors['center_name'] = "Bowling center name required";
     }
     if (isset($errors)) {
         foreach ($errors as $field => $error_message) {
@@ -14,12 +14,12 @@ if (isset($_POST['submit'])) {
     }
 //    move_uploaded_file($_FILES['userfile']['tmp_name'], '../../uploads/');
     $query = "
-        INSERT INTO `bowling_centers` (
+        INSERT INTO `centers` (
             `name`,
             `location`,
             `notes`
         ) VALUES (
-            '" . $_POST['pattern_name'] . "',
+            '" . $_POST['center_name'] . "',
             '" . $_POST['location'] . "',
             '" . $_POST['notes'] . "'
         )";
