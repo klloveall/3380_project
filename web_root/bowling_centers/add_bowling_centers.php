@@ -16,12 +16,10 @@ if (isset($_POST['submit'])) {
     $query = "
         INSERT INTO `bowling_centers` (
             `name`,
-            `filepath`,
             `location`,
             `notes`
         ) VALUES (
             '" . $_POST['pattern_name'] . "',
-            '" . $_POST['file'] . "',
             '" . $_POST['location'] . "',
             '" . $_POST['notes'] . "'
         )";
