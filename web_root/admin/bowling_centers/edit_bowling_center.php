@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
         $query = "
         UPDATE `centers` SET 
             `name` = '" . $_POST['center_name'] . "',
-            `location` - '" . $_POST['location'] . "',
+            `location` = '" . $_POST['location'] . "',
             `notes` = '" . $_POST['notes'] . "'
         WHERE `id` = '" . $_GET['id'] . "'
         ";
