@@ -1,4 +1,5 @@
 <?php
+
 require_once '../../includes/includes.php';
 
 if (isset($_GET['id'])) {
@@ -12,8 +13,9 @@ if (isset($_GET['id'])) {
             $_TEMPLATES['vars']['success'] = "Bowling team successfully deleted";
             display_team_listing();
         }
+    }
 
- if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
         if (!$_POST['team_name']) {
             $errors['team_name'] = "Bowling team name required";
         }
@@ -25,10 +27,9 @@ if (isset($_GET['id'])) {
             exit();
         }
 
-$query = "
+        $query = "
         UPDATE `teams` SET 
             `name` = '" . $_POST['team_name'] . "',
-            `owner_id` = '" . $_POST['owner'] . "',
             `notes` = '" . $_POST['notes'] . "'
         WHERE `id` = '" . $_GET['id'] . "'
         ";
@@ -39,12 +40,10 @@ $query = "
         }
         $_TEMPLATES['vars']['success'] = "Bowling Team edited successfully";
         display_team_listing();
-
     } else {  // Display single listing edit form
         $query = "
         SELECT
             `name`,
-            `owner_id`,
             `notes`
         FROM   `teams`
         WHERE `id` = '" . $_GET['id'] . "'
@@ -55,8 +54,8 @@ $query = "
             exit();
         }
         $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $_POST['pattern_name'] = $data['name'];
-        $_POST['filepath'] = $data['owner_id'];
+        $_POST['team_name'] = $data['name'];
+//        $_POST['owner'] = $data['owner_id'];
         $_POST['notes'] = $data['notes'];
         require_once $_TEMPLATES['location'] . 'bowling_teams/edit.tpl.php';
         exit();
@@ -66,26 +65,26 @@ $query = "
 }
 
 function display_team_listing() {
-$query = "
+    global $_TEMPLATES, $_DB;
+    $query = "
 	SELECT 
         `teams`.`id` AS `teams_id`,
         `teams`.`name`,
+        `teams`.`notes`
       FROM
  	   `teams`
 	 WHERE 1 
 ";
-$results = mysqli_query($_DB, $query);
-if ($results === false)
-{
-	echo "Error reading event: ". mysqli_error($_DB);
-	exit();
-}
-$data = mysqli_fetch_array($results, MYSQLI_ASSOC);
+    $results = mysqli_query($_DB, $query);
+    if ($results === false) {
+        echo "Error reading event: " . mysqli_error($_DB);
+        exit();
+    }
 
-$_POST['teams_id'] = $data['teams_id'];
-$_POST['teamname'] = $data['name'];
+    while ($data = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
+        $_TEMPLATES['vars']['teams'][] = $data;
+    }
 
-require_once $_TEMPLATES['location'] . 'team/view.tpl.php';
-exit();   
+    require_once $_TEMPLATES['location'] . 'bowling_teams/listing.tpl.php';
+    exit();
 }
-  
