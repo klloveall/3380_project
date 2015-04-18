@@ -197,6 +197,13 @@
                                     <li><a href="/tracker/admin/events/edit_event.php">Edit Event</a></li>
                                 </ul>
                             </li>
+                            <li><a href="/tracker/admin/balls/view_ball.php">Balls<span class="caret"></span></a>
+                                <ul class="children">
+                                    <li><a href="/tracker/admin/balls/add_ball.php">Add Ball</a></li>
+                                    <li><a href="/tracker/admin/balls/view_ball.php">View Ball</a></li>
+                                    <li><a href="/tracker/admin/balls/edit_ball.php">Edit Ball</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                     <span class="dept">Cougar Bowling Club & Team</span>
