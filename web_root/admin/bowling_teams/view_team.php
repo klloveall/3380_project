@@ -1,5 +1,4 @@
 <?php
-
 require_once '../../includes/includes.php';
 
 if (isset($_GET['id'])) {
@@ -68,7 +67,7 @@ function display_team_listing() {
     while ($data = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
         $_TEMPLATES['vars']['teams'][] = $data;
     }
-
+    
     require_once $_TEMPLATES['location'] . 'bowling_teams/listing.tpl.php';
     exit();
 }

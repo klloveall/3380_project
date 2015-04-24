@@ -197,6 +197,8 @@
                                     <li><a href="/tracker/admin/events/edit_event.php">Edit Event</a></li>
                                 </ul>
                             </li>
+                             <li><a href="/tracker/admin/upload_scores/upload_scores.php">Upload Scores<span class="caret"></span></a>
+                            </li>
                         </ul>
                     </nav>
                     <span class="dept">Cougar Bowling Club & Team</span>
