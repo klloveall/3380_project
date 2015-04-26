@@ -13,14 +13,14 @@ value="<?=$_POST['team_name']?>" />
         <span class="error"><?= $_TEMPLATES['vars']['form_errors']['team_name'] ?></span>
     <? endif; ?>
 
-<form action="" method="post">
+<!--<form action="" method="post">
     <label for="owner">Owner Name:</label>
     <input type="text" maxlength="50" owner="owner" 
 value="<?=$_POST['owner']?>" />
 
 <? if (isset($_TEMPLATES['vars']['form_errors']['owner'])): ?>
         <span class="error"><?= $_TEMPLATES['vars']['form_errors']['owner'] ?></span>
-    <? endif; ?>
+    <? endif; ?>-->
 
 <label for="notes">Notes:</label>
     <textarea name="notes"><?=$_POST['notes']?></textarea>
