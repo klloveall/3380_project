@@ -38,8 +38,11 @@ foreach ($xml->Games as $xmlinfo):
     $games[$i]{15} = $xmlinfo->ScoreType;
     $games[$i]{16} = $xmlinfo->PlayerType;
     $i++;
-endforeach;
 
+    // Put player names in player name array
+    $player_names["".$xmlinfo->PlayerName] = true;
+endforeach;
+$_SESSION["gamecount"]=$i;
 for ($a = 0; $a < $i; $a++) {
     for ($b = 0; $b < 17; $b++) {
         $games2 = $games[$a][$b];
@@ -226,7 +229,7 @@ foreach ($xml->PinMasks as $xmlinfo):
     $pinmasks[$i][33] = $xmlinfo->Frame12Ball1;
     $i++;
 endforeach;
-
+$_SESSION["pinmask_count"]=$i;
 for ($a = 0; $a < $i; $a++) {
     for ($b = 0; $b < 23; $b++) {
         $pin_masks = $pinmasks[$a][$b];
@@ -264,6 +267,7 @@ foreach ($xml->StatisticGames as $xmlinfo):
     $statistic_games[$i]{23} = $xmlinfo->IDPlayer;
     $i++;
 endforeach;
+$_SESSION["stat_count"]=$i;
 for ($a = 0; $a < $i; $a++) {
     for ($b = 0; $b < 23; $b++) {
         $statistic_games2 = $statistic_games[$a][$b];
@@ -328,32 +332,38 @@ while ($data_three = mysqli_fetch_array($result_three, MYSQLI_ASSOC)) {
         <br><br>
         Select Bowling Center:
         <select name="center">
-<?php foreach ($_TEMPLATE['vars']['centers'] as $centers): ?>
+            <?php foreach ($_TEMPLATE['vars']['centers'] as $centers): ?>
                 <option value="<?=$centers['id']?>"><?=$centers['name']?></option>
-            <?php endforeach; ?>
-        </select>
-        <br><br>
-        Select Bowling Pattern:
-        <select name="pattern">
-<?php foreach ($_TEMPLATE_TWO['vars']['pattern'] as $pattern): ?>
-                <option value="<?=$pattern['id']?>"><?=$pattern['name']?></option>
             <?php endforeach; ?>
             </select>
             <br><br>
-            Select Bowling UserNames:
-            <br>
-<?php for ($a = 0; $a < 3; $a++): ?>
-                Name: <?php echo $games[$a][8] ?>
-                <select name="bowler[a]">
-<?php foreach ($_TEMPLATE_THREE['vars']['users'] as $users): ?>
+            Select Bowling Pattern:
+                <select name="pattern">
+                <?php foreach ($_TEMPLATE_TWO['vars']['pattern'] as $pattern): ?>
+                    <option value="<?=$pattern['id']?>"><?=$pattern['name']?></option>
+                <?php endforeach; ?>
+                </select>            
+                <br><br>
+                Cross Lane:
+                    <select name="crosslane">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <br><br>
+                Select Bowling UserNames:
+                <br>
+        <?php foreach ($player_names as $name => $ignore): ?>
+                        Name: <?php echo $name; ?>
+                        <select name="bowler|<?=$name?>">
+            <?php foreach ($_TEMPLATE_THREE['vars']['users'] as $users): ?>
                             <option value="<?=$users['id']?>"><?=$users['preferred_name']?></option>
             <?php endforeach; ?>
-                    </select>
-                    <br>
-<?php endfor; ?>
-                    <br><br>
-                    <input type="submit" value="Submit"></fieldset>
-            </form>
+                        </select>
+                        <br>
+        <?php endforeach; ?>
+                            <br><br>
+                            <input type="submit" value="Submit"></fieldset>
+                    </form>
 
 
 

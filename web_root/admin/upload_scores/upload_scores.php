@@ -13,7 +13,7 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
         
         <form action="upload_scores.tpl.php" method="post" enctype="multipart/form-data">
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Upload Image" name="submit">
+            <input type="submit" value="Upload Scores" name="submit">
         </form>
 
     </body>
