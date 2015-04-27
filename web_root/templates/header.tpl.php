@@ -204,6 +204,8 @@
                                     <li><a href="/tracker/admin/events/edit_event.php">Edit Event</a></li>
                                 </ul>
                             </li>
+                             <li><a href="/tracker/admin/upload_scores/upload_scores.php">Upload Scores<span class="caret"></span></a>
+
                             <li><a href="/tracker/admin/balls/view_ball.php">Balls<span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/balls/add_ball.php">Add Ball</a></li>
