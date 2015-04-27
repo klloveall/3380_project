@@ -16,3 +16,38 @@
     background-color: #CFC;
     padding: 3px;
 }
+
+fieldset {
+    padding: 5px;
+    margin: 5px;
+    border-style: solid;
+    border-color: #AAA;
+    border-width: thin;
+    border-radius: 5px;
+}
+legend {
+    background-color: #FFF;
+    margin-left: 10px;
+    color: #ae010d;
+    font-size: 14px;
+    font-weight: bold;
+}
+input.inline {
+    width: auto !important;
+    clear: none !important;
+}
+div.pin_layout span {
+    margin: 0px;
+    padding:2px;
+    width: 40px;
+    display: inline-block;
+}
+div.pin_layout span.spacer1 {
+    width: 20px;
+}
+div.pin_layout span.spacer2 {
+    width: 40px;
+}
+div.pin_layout span.spacer3 {
+    width: 60px;
+}
