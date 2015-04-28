@@ -36,7 +36,6 @@ if (!isset($_SESSION['user_id']) && isset($_POST['login_username'])) {
         WHERE `email` = '" . $_POST['login_username'] . "'";
     $result = mysqli_query($_DB, $query);
     $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    print_r($data);
     if ($data['password'] == md5($_POST['login_password'])) {
         $_SESSION['user_id'] = $data['id'];
     } else {
@@ -48,7 +47,6 @@ if (!isset($_SESSION['user_id']) && isset($_POST['login_username'])) {
 
 function require_login() {
     global $_TEMPLATES;
-    print_r($_SESSION);
     if (!isset($_SESSION['user_id'])) {
         require_once $_TEMPLATES['location'] . 'login.tpl.php';
         exit();
