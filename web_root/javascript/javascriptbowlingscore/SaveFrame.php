@@ -48,8 +48,8 @@ $created_date = date("Y-m-d H:i:s");
      b1_foul,b1_p1,b1_p2,b1_p3,b1_p4,b1_p5,b1_p6,b1_p7,b1_p8,b1_p9,b1_p10,b2_ball_id,b2_release,b2_gutter,b2_foul,b2_p1,b2_p2,b2_p3,
      b2_p4,b2_p5,b2_p6,b2_p7,b2_p8,b2_p9,b2_p10,b3_ball_id,b3_release,b3_gutter,b3_foul,b3_p1,b3_p2,b3_p3,
      b3_p4,b3_p5,b3_p6,b3_p7,b3_p8,b3_p9,b3_p10)
-    VALUES ($gameid,$userid,$lane,$framecount,$centerid,$patternid,$created_date,NULL,$fingerreleaseid,0,0,$b1p1,$b1p2,$b1p3,$b1p4,$b1p5,$b1p6,$b1p7,$b1p8,$b1p9,$b1p10,NULL,$fingerreleaseid
-        ,0,0,$b2p1,$b2p2,$b2p3,$b2p4,$b2p5,$b2p6,$b2p7,$b2p8,$b2p9,$b2p10,NULL,$fingerreleaseid,0,0,$b3p1,$b3p2,$b3p3,$b3p4,$b3p5,$b3p6,$b3p7,$b3p8,$b3p9,$b3p10)";
+    VALUES ('$gameid','$userid','$lane','$framecount','$centerid','$patternid','$created_date','NULL','$fingerreleaseid','0','0','$b1p1','$b1p2','$b1p3','$b1p4','$b1p5','$b1p6','$b1p7','$b1p8','$b1p9','$b1p10','NULL','$fingerreleaseid'
+        ,'0','0','$b2p1','$b2p2','$b2p3','$b2p4','$b2p5','$b2p6','$b2p7','$b2p8','$b2p9','$b2p10','NULL','$fingerreleaseid','0','0','$b3p1','$b3p2','$b3p3','$b3p4','$b3p5','$b3p6','$b3p7','$b3p8','$b3p9','$b3p10')";
  }
  else
  {
