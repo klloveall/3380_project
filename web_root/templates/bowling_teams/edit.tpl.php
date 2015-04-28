@@ -26,6 +26,22 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
     <span class="error"><?= $_TEMPLATES['vars']['form_errors']['notes'] ?></span>
     <? endif; ?>
 
+        Select Owner:
+        <select name="owner">
+            <?php foreach ($_TEMPLATES['vars']['bowlers'] as $bowlers): ?>
+                <option value="<?=$bowlers['id']?>" <?=($_POST['owner'] == $bowlers['id'] ? "selected='selected'" : "")?>><?=$bowlers['name']?></option>
+            <?php endforeach; ?>
+        </select>
+    <br> <br>
+
+    Select Bowlers:
+        <select name="bowlers[]" multiple="multiple">
+            <?php foreach ($_TEMPLATES['vars']['bowlers'] as $bowlers): ?>
+                <option value="<?=$bowlers['id']?>" <?=in_array($bowlers['id'],$_POST['users']) ? "selected='selected'" : ""?>><?=$bowlers['name']?></option>
+            <?php endforeach; ?>
+        </select>
+    <br> <br>
+
     <input type="submit" name="submit" value="Edit Team" />
 </form>
 
