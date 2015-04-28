@@ -7,10 +7,14 @@ if (isset($_GET['id'])) {
 	SELECT 
         `teams`.`id` AS `teams_id`,
         `teams`.`name`,
-        `teams`.`owner_id`,
-        `teams`.`notes`
+        CONCAT(`users`.`preferred_name`, `users`.`last_name`) AS `owner_name`,
+        `teams`.`notes`,
+        CONCAT(`team_members`.`preferred_name`, `team_members`.`last_name`) AS `member_name`
       FROM
  	   `teams`
+           LEFT JOIN `users` ON `teams`.`owner_id` = `users`.`id`
+           LEFT JOIN `teams_users` ON `teams`.`id` = `teams_users`.`team_id`
+           LEFT JOIN `users` AS `team_members` ON `teams_users`.`user_id` = `team_members`.`id`
 	 WHERE `teams`.`id` ='" . $_GET['id'] . "'
 ";
 //    $query_two = "
@@ -29,11 +33,18 @@ if (isset($_GET['id'])) {
         exit();
     }
     $data = mysqli_fetch_array($results, MYSQLI_ASSOC);
-    
+
     $_TEMPLATES['vars']['teams_id'] = $data['teams_id'];
     $_TEMPLATES['vars']['name'] = $data['name'];
-    $_TEMPLATES['vars']['owner_id'] = $data['owner_id'];
+    $_TEMPLATES['vars']['owner_name'] = $data['owner_name'];
     $_TEMPLATES['vars']['notes'] = $data['notes'];
+
+    $_TEMPLATES['vars']['members'][] = $data['member_name'];
+    while ($data = mysqli_fetch_array($results, MYSQLI_ASSOC)) {
+        $_TEMPLATES['vars']['members'][] = $data['member_name'];
+    }
+
+
 
 //    $results_two = mysqli_query($_DB, $query_two);
 //    if ($results_two === false) {
@@ -41,7 +52,7 @@ if (isset($_GET['id'])) {
 //        exit();
 //    }
 //    $data_two = mysqli_fetch_array($results_two, MYSQLI_ASSOC);
-    
+
     require_once $_TEMPLATES['location'] . 'bowling_teams/view.tpl.php';
     exit();
 } else {
