@@ -177,7 +177,7 @@
                                     <li><a href="/tracker/admin/users/edit_user.php">Edit Users</a></li>
                                      <li><a href="/tracker/admin/balls_users/add_balls_users.php">Add Ball Users</a></li>
                                     <li><a href="/tracker/admin/balls_users/view_balls_users.php">View Ball Users</a></li>
-                                    <li><a href="/tracker/admin/balls_users/edits_balls_users.php">Edit Ball Users</a></li>
+                                    <li><a href="/tracker/admin/balls_users/edit_balls_users.php">Edit Ball Users</a></li>
                                 </ul>
                             </li>
                             <li><a href="/tracker/admin/oil_patterns/view_oil_pattern.php">Oil Patterns <span class="caret"></span></a>
