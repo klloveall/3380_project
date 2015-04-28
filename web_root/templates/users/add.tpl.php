@@ -41,16 +41,6 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
     <? if (isset($_TEMPLATES['vars']['form_errors']['email'])): ?>
         <span class="error"><?= $_TEMPLATES['vars']['form_errors']['email'] ?></span>
     <? endif; ?>
-	<label for="password">Password:</label>
-	<input type="password" maxlength="50" name="password" value="<?=$_POST['password']?>" />
-    <? if (isset($_TEMPLATES['vars']['form_errors']['password'])): ?>
-        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['password'] ?></span>
-    <? endif; ?>
-	<label for="password_confirm">Password Confirm:</label>
-	<input type="password" maxlength="50" name="password_confirm" value="<?=$_POST['password_confirm']?>" />
-    <? if (isset($_TEMPLATES['vars']['form_errors']['password_confirm'])): ?>
-        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['password_confirm'] ?></span>
-    <? endif; ?>
 
     
     <input type="submit" name="submit" value="Add User" />

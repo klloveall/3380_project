@@ -1,6 +1,5 @@
 <?php
 require_once '../../includes/includes.php';
-require_login();
 if (isset($_GET['id'])) {
     if (isset($_GET['delete'])) {
         $query = "DELETE FROM `users` WHERE `id` = '" . $_GET['id'] . "'";
@@ -76,7 +75,7 @@ function display_team_listing() {
     global $_TEMPLATES, $_DB;
     $query = "
 	SELECT 
-        `users`.`id` AS `users_id`,
+        `users`.`id`,
         `users`.`first_name`,
         `users`.`preferred_name`,
 		`users`.`middle_name`,

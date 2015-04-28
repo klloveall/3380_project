@@ -117,6 +117,7 @@ function display_team_listing() {
 		`games`.`id`,
         `games`.`set_id`,
 		`games`.`user_id`,
+		`games`.`game_number`;
 		`games`.`time_bowled`,
 		`games`.`baker`,
 		`games`.`score`,
