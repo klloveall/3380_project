@@ -2,7 +2,7 @@
 window.alert("successful");
 </script>
 <?php
- include 'ConnectDatabase.php';
+ require_once '../../includes/includes.php';
  $gameid = trim($_POST["gameid"]);
  $userid = trim($_POST["userid"]);
  $patternid = trim($_POST["patternid"]);

@@ -1,4 +1,5 @@
 <?php
+require_once '../../includes/includes.php';
 echo "<script>";
 echo "var userid='";
 echo $_GET["userid"];
