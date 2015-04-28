@@ -2,6 +2,7 @@
 
 date_default_timezone_set("America/Chicago");
 $_DB = mysqli_connect('localhost', 'u3380', 'h898efRG842', '3380project');
+session_start('3380Project8');
 
 if (!$_DB) {
     echo "ERROR!" . mysqli_error($_DB);
@@ -26,4 +27,28 @@ function escape_variable_recursive($var) {
 $_TEMPLATES['location'] = dirname(__FILE__) . '/../templates/';
 $_TEMPLATES['root_path'] = '/tracker/';
 
-require_once 'classes/authentication.class.php';
+if (!isset($_SESSION['user_id']) && isset($_POST['login_username'])) {
+    $query = "
+        SELECT
+            `id`,
+            `password`
+        FROM `users`
+        WHERE `email` = '" . $_POST['login_username'] . "'";
+    $result = mysqli_query($_DB, $query);
+    $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    if ($data['password'] == md5($_POST['login_password'])) {
+        $_SESSION['user_id'] = $data['id'];
+    } else {
+        $_TEMPLATES['vars']['error'] = "Password incorrect";
+        require_once $_TEMPLATES['location'] . 'login.tpl.php';
+        exit();
+    }
+}
+
+function require_login() {
+    global $_TEMPLATES;
+    if (!isset($_SESSION['user_id'])) {
+        require_once $_TEMPLATES['location'] . 'login.tpl.php';
+        exit();
+    }
+}

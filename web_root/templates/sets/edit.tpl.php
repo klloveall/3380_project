@@ -29,7 +29,7 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
   
 	<?php endforeach; ?>
 	</select>
-	
+	<p> <br> </br> </p>
     <label for="notes">Notes:</label>
     <textarea name="notes"><?=$_POST['notes']?></textarea>
     <? if (isset($_TEMPLATES['vars']['form_errors']['notes'])): ?>
