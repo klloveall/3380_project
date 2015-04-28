@@ -1,6 +1,5 @@
 <?php
   require_once '../../includes/includes.php';
-require_login();
  
 if (isset($_POST['submit'])) {
 
@@ -35,22 +34,6 @@ if (isset($_POST['submit'])) {
     unset($_POST);
 }
 
-$query = "
-		SELECT 
-			`id`,
-			`name`
-		FROM `centers`
-		WHERE 1
-";
-$result = mysqli_query($_DB, $query);
-if ($result === false) {
-    echo "DB ERROR: " . mysqli_error($_DB);
-    exit();
-}
-while($data = mysqli_fetch_array($result, MYSQLI_ASSOC))
-{
-	$_TEMPLATES['vars']['center'][] = $data;
-}	
 $query = "
 		SELECT 
 			`id`,
