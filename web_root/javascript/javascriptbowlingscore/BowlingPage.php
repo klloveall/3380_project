@@ -3,7 +3,7 @@
 
 <?php
 require_once '../../includes/includes.php';
-$loginID = "1";
+$loginID = $_SESSION["user_id"];
 $query = "SELECT game_number,id,notes FROM games WHERE user_id =".$loginID;
 $stmt = mysqli_query($_DB, $query);
 echo "Games: ";
@@ -59,11 +59,11 @@ $dropdown .= "\r\n</select>";
 echo $dropdown;
 
 
-//$query = "SELECT first_name,last_name FROM users WHERE id =".$loginID;
-//$stmt = mysqli_query($_DB, $query);
+$query = "SELECT first_name,last_name FROM users WHERE id =".$loginID;
+$stmt = mysqli_query($_DB, $query);
 
-//foreach ($stmt as $row)
-    $username = "Bob";
+foreach ($stmt as $row)
+    $username = "{$row['first_name']} {$row['last_name']}";
 
 
 
@@ -94,10 +94,10 @@ function startGameClick()
     var fingerrelease = document.getElementById("fingerrelease");
     var strfingerrelease = fingerrelease.options[fingerrelease.selectedIndex].value;
     window.alert(userid);
-    window.alert('/3380Project/web_root/javascript/javascriptbowlingscore/BowlingGameScore.php?'+'userid=' + userid  +'&username=' + username + '&gameid=' + strgameid +
+    window.alert('/tracker/javascript/javascriptbowlingscore/BowlingGameScore.php?'+'userid=' + userid  +'&username=' + username + '&gameid=' + strgameid +
         '&centerid=' + strcenter + '&patternid=' + strpattern
          + '&lane=' + strlane +'&fingerrelease=' + strfingerrelease);
-    window.location.href = '/3380Project/web_root/javascript/javascriptbowlingscore/BowlingGameScore.php?'+'userid=' + userid  +'&username=' + username + '&gameid=' + strgameid +
+    window.location.href = '/tracker/javascript/javascriptbowlingscore/BowlingGameScore.php?'+'userid=' + userid  +'&username=' + username + '&gameid=' + strgameid +
         '&centerid=' + strcenter  + '&patternid=' + strpattern
          + '&lane=' + strlane +'&fingerreleaseid=' + strfingerrelease;
 

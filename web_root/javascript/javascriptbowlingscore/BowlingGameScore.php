@@ -186,7 +186,7 @@ function PostData() {
             if (xhr.status == 200 && xhr.status < 300) {
                 document.getElementById('div1').innerHTML = xhr.responseText;
                 if (framecount == 10)
-                    window.location.href = "/3380Project/web_root/javascript/javascriptbowlingscore/BowlingPage.php";
+                    window.location.href = "/tracker/javascript/javascriptbowlingscore/BowlingPage.php";
                 else
                     newFrame();
             }
