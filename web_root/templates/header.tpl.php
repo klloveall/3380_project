@@ -168,14 +168,22 @@
                     <nav class="nav-primary" role="navigation">
                         <ul class="parents">
 
-                            <li><a href="/tracker/index.php">Home</a></li>
-<!--                            <li><a href="/tracker/admin/bowlers/view_bowlers.php">Bowlers <span class="caret"></span></a>
+                            <li><a href="/tracker/index.php">Home<span class="caret"></span></a>
                                 <ul class="children">
-                                    <li><a href="/tracker/admin/bowlers/add_bowler.php">Add New Bowler</a></li>
-                                    <li><a href="/tracker/admin/bowlers/view_bowler.php">View Bowlers</a></li>
-                                    <li><a href="/tracker/admin/bowlers/edit_bowler.php">Edit Bowlers</a></li>
+                                    <?php if (!isset($_POST['user_id'])): ?>
+                                    <li><a href="/tracker/login.php">Login</a></li>
+                                    <?php else: ?>
+                                    <li><a href="/tracker/logout.php">Logout</a></li>
+                                    <?php endif; ?>
                                 </ul>
-                            </li>-->
+                            </li>
+                            <li><a href="/tracker/admin/users/view_user.php">Bowlers <span class="caret"></span></a>
+                                <ul class="children">
+                                    <li><a href="/tracker/admin/users/add_user.php">Add New Bowler</a></li>
+                                    <li><a href="/tracker/admin/users/view_user.php">View Bowlers</a></li>
+                                    <li><a href="/tracker/admin/users/edit_user.php">Edit Bowlers</a></li>
+                                </ul>
+                            </li>
                             <li><a href="/tracker/admin/oil_patterns/view_oil_pattern.php">Oil Patterns <span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/oil_patterns/add_oil_pattern.php">Add Oil Pattern</a></li>
