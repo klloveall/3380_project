@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
         UPDATE `users` SET 
 			`first_name` = '" . $_POST['first_name'] . "',
 			`preferred_name` = '" . $_POST['preferred_name'] . "',
-			`middle_name`` = '" . $_POST['middle_name'] . "',
+			`middle_name` = '" . $_POST['middle_name'] . "',
 			`last_name` = '" . $_POST['last_name'] . "',
 			`cell_phone` = '" . $_POST['cell_phone'] . "',
             `email` = '" . $_POST['email'] . "'

@@ -13,7 +13,7 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
 	</select>
 	
 	<label for="name"> User ID:</label>
-	<select name = "pattern_id">
+	<select name = "user_id">
 	<?php foreach ($_TEMPLATES['vars']['users'] AS $users): ?>
 		
 			<option value = "<?=$users['id']?>" > <?=$users['preferred_name']?> </option>
