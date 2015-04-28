@@ -47,12 +47,19 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
         <span class="error"><?= $_TEMPLATES['vars']['form_errors']['color'] ?></span>
     <? endif; ?>
 
-<label for="name"> Color Stock:</label>
-    <input type="text" maxlength="50" name="stock" value="<?=$_POST['stock']?>" />
-    <? if (isset($_TEMPLATES['vars']['form_errors']['stock'])): ?>
-        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['stock'] ?></span>
-    <? endif; ?>
-
+<label for="name"> Color Stock:</label>    
+    
+<select name="stock">
+  <option value="">Select...</option>
+  <option value="plastic">Plastic</option>
+  <option value="urethane">Urethane</option>
+   <option value="reactive_resin">Reactive Resin</option>
+   <option value="urethane">Urethane</option>
+   <option value="solid_reactive">Solid Reactive</option>
+    <option value="hybird_reactive">Hybrid Reactive</option>
+   <option value="particle">Particle</option>
+</select>
+<br> </br>
     <label for="notes">Notes:</label>
     <textarea name="notes"><?=$_POST['notes']?></textarea>
     <? if (isset($_TEMPLATES['vars']['form_errors']['notes'])): ?>

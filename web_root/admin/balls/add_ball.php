@@ -37,6 +37,7 @@ if (isset($_POST['submit'])) {
     '" . $_POST['stock'] . "',
             '" . $_POST['notes'] . "'
         )";
+    print_r($query);
     $result = mysqli_query($_DB, $query);
     if ($result === false) {
         echo "DB ERROR: " . mysqli_error($_DB);
