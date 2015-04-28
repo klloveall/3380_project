@@ -161,7 +161,15 @@
                     <nav class="nav-primary" role="navigation">
                         <ul class="parents">
 
-                            <li><a href="/tracker/index.php">Home</a></li>
+                            <li><a href="/tracker/index.php">Home<span class="caret"></span></a>
+                                <ul class="children">
+                                    <?php if (isset($_SESSION['user_id'])): ?>
+                                    <li><a href="/tracker/logout.php">Logout</a></li>
+                                    <?php else: ?>
+                                    <li><a href="/tracker/login.php">Login</a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </li>
                             <li><a href="/tracker/admin/events/view_user.php">Users<span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/users/add_user.php">Add Users</a></li>
