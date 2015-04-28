@@ -1,7 +1,6 @@
 <?php
 require_once $_TEMPLATES['location'] . 'header.tpl.php';
 ?>
-
 <h1><b>Team Number </b></h1>
 
 <p><b>Team Id:</b> <?= $_TEMPLATES['vars']['teams_id'] ?></p>
