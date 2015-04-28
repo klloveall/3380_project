@@ -1,7 +1,7 @@
 <?php
 require_once $_TEMPLATES['location'] . 'header.tpl.php';
 ?>
-<h1>Edit Set</h1>
+<h1>Edit Game</h1>
 <form action="" method="post">
     <label for="name"> Set ID:</label>
 	<select name = "set_id">
