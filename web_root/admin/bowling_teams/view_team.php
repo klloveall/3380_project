@@ -1,7 +1,6 @@
 <?php
 
 require_once '../../includes/includes.php';
-
 if (isset($_GET['id'])) {
     $query = "
 	SELECT 
