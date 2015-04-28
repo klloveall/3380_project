@@ -2,9 +2,9 @@
   require_once '../../includes/includes.php';
  
 if (isset($_POST['submit'])) {
-    if ($_POST['password'] != $_POST['password_confirm']) {
-        $errors['password'] = "Password fields must match";
-    }
+    //if (!$_POST['balls_user']) {
+    //    $errors['balls_user'] = "User name required";
+    //}
     if (isset($errors)) {
         foreach ($errors as $field => $error_message) {
             $_TEMPLATES['vars']['form_errors'][$field] = $error_message;
@@ -20,16 +20,14 @@ if (isset($_POST['submit'])) {
 			`middle_name`,
 			`last_name`,
 			`cell_phone`,
-			`email`,
-                        `password`
+			`email`
         ) VALUES (
 		    '" . $_POST['first_name'] . "',		
             '" . $_POST['preferred_name'] . "',
 			'" . $_POST['middle_name'] . "',	
 			'" . $_POST['last_name'] . "',
 			'" . $_POST['cell_phone'] . "',
-			'" . $_POST['email'] . "',
-			'" . md5($_POST['password']) . "'
+			'" . $_POST['email'] . "'
         )";
     $result = mysqli_query($_DB, $query);
     if ($result === false) {

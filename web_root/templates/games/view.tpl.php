@@ -7,8 +7,8 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
 <p><b>Game Number:</b> <?= $_TEMPLATES['vars']['game_number'] ?></p>
 <p><b>Time Bowled:</b> <?= $_TEMPLATES['vars']['time_bowled'] ?></p>
 <p><b>Baker:</b> <?= $_TEMPLATES['vars']['baker'] ?></p>
-<p><b>Score:</b> <?= $_TEMPLATES['vars']['scrores'] ?></p>
-<p><b>Notes:</b> <?= $_TEMPLATES['vars']['notes'] ?></p>
+<p><b>Score:</b> <?= $_TEMPLATES['vars']['scrore'] ?></p>
+<p><b>Note:</b> <?= $_TEMPLATES['vars']['notes'] ?></p>
 
 <a href="?">Back to listing</a>
 

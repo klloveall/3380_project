@@ -23,6 +23,8 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
 	<?php endforeach; ?>
 	</select>
 	
+	<p> <br> </br> </p>
+	
 	<label for="game_number">Game Number:</label>
     <textarea name="game_number"><?=$_POST['game_number']?></textarea>
     <? if (isset($_TEMPLATES['vars']['form_errors']['game_number'])): ?>
