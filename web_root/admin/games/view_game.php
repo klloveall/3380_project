@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
 			`games`.`game_number`,
 			`games`.`time_bowled`,
 			`games`.`baker`,
-			`games`.`scrore`,
+			`games`.`score`,
 			`games`.`notes`
 		FROM
 			`games`		
@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
     $_TEMPLATES['vars']['game_number'] = $data['game_number'];
 	$_TEMPLATES['vars']['time_bowled'] = $data['time_bowled'];
 	$_TEMPLATES['vars']['baker'] = $data['baker'];
-	$_TEMPLATES['vars']['scrore'] = $data['scrore'];
+	$_TEMPLATES['vars']['score'] = $data['score'];
     $_TEMPLATES['vars']['notes'] = $data['notes'];
   
     require_once $_TEMPLATES['location'] . 'games/view.tpl.php';
@@ -44,7 +44,7 @@ function display_team_listing() {
 		`games`.`game_number`,
 		`games`.`time_bowled`,
 		`games`.`baker`,
-		`games`.`scrore`,
+		`games`.`score`,
 		`games`.`notes`
       FROM
  	   `games`

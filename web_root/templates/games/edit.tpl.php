@@ -39,10 +39,10 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
         <span class="error"><?= $_TEMPLATES['vars']['form_errors']['baker'] ?></span>
     <? endif; ?>
 	
-	<label for="scrores">Score:</label>
-    <textarea name="notes"><?=$_POST['scrores']?></textarea>
-    <? if (isset($_TEMPLATES['vars']['form_errors']['scrores'])): ?>
-        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['scrores'] ?></span>
+	<label for="scores">Score:</label>
+    <textarea name="notes"><?=$_POST['score']?></textarea>
+    <? if (isset($_TEMPLATES['vars']['form_errors']['score'])): ?>
+        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['score'] ?></span>
     <? endif; ?>
 	
     <label for="notes">Notes:</label>

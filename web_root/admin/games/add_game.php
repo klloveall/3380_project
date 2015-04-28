@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 			`baker`,
 			`user_id`,
             `game_number`,
-            `scrore`,
+            `score`,
             `notes`
         ) VALUES (
             '" . $_POST['set_id'] . "',
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
             '" . $_POST['baker'] . "',
             '" . $_POST['user_id'] . "',
 			'" . $_POST['game_number'] . "',
-			'" . $_POST['scrore'] . "',
+			'" . $_POST['score'] . "',
 			'" . $_POST['notes'] . "'
         )";
     $result = mysqli_query($_DB, $query);
