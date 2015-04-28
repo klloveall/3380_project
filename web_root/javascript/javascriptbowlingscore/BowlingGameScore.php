@@ -13,12 +13,6 @@ echo "';";
 echo "var gameid='";
 echo $_GET["gameid"];
 echo "';";
-echo "var ball1id='";
-echo $_GET["ball1id"];
-echo "';";
-echo "var ball2id='";
-echo $_GET["ball2id"];
-echo "';";
 echo "var patternid='";
 echo $_GET["patternid"];
 echo "';";
@@ -34,6 +28,17 @@ echo "<h1>";
 echo $_GET["username"];
 echo "</h1>";
 echo "</div>";
+echo "<br>";
+echo "<br>";
+$query = "SELECT custom_name,id FROM balls_users WHERE user_id =".$_GET["userid"];
+$stmt = mysqli_query($_DB, $query);
+echo "Ball: ";
+$dropdown = "<select id='Ball'>";
+$dropdown .= "\r\n<option value='0'>Select a Ball:</option>";
+foreach ($stmt as $row)
+    $dropdown .= "\r\n<option value='{$row['id']}'>{$row['custom_name']}</option>";
+$dropdown .= "\r\n</select>";
+echo $dropdown;
 ?>
 
 <div style="left:50%;top:50%; margin-top: -250px;
@@ -130,6 +135,11 @@ echo "</div>";
         <td><input type ="button" onclick = PostData() style="width:100px;height:40px" value ="Next Frame" /></td>
     </tr>
 </table>
+<select style ="top:450px;left:500px;height:40px;position:absolute">
+        <p> Gutter </p> 
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+</select>
 
 </div>
 <div id ="div1">
@@ -153,7 +163,8 @@ echo "</div>";
     var displaycurrentframe = "1";
     var tenthframeshotcount = "1";
     var storescore = "0";
-
+    var ball = document.getElementById("Ball");
+    var strball1 = ball.options[ball.selectedIndex].value;
 function PostData() {
     var currentframe = framecount.toString();
     // 1. Create XHR instance - Start
@@ -175,7 +186,7 @@ function PostData() {
             if (xhr.status == 200 && xhr.status < 300) {
                 document.getElementById('div1').innerHTML = xhr.responseText;
                 if (framecount == 10)
-                    window.location.href = "/BowlingPage.php";
+                    window.location.href = "/3380Project/web_root/javascript/javascriptbowlingscore/BowlingPage.php";
                 else
                     newFrame();
             }
@@ -186,8 +197,8 @@ function PostData() {
     // 3. Specify your action, location and Send to the server - Start
     xhr.open('POST', '/SaveFrame.php');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("&userid=" + userid + "&centerid=" + centerid + "&gameid=" + gameid + "&framecount=" + currentframe + "&ball1id=" + ball1id +
-        "&ball2id=" + ball2id + "&patternid=" + patternid + "&lane=" + lane + "&fingerreleaseid=" + fingerreleaseid
+    xhr.send("&userid=" + userid + "&centerid=" + centerid + "&gameid=" + gameid + "&framecount=" + currentframe + "&ballid=" + strball1
+        + "&patternid=" + patternid + "&lane=" + lane + "&fingerreleaseid=" + fingerreleaseid
         + "&b1p1=" + shot1array[0] + "&b1p2=" + shot1array[1] +"&b1p3=" + shot1array[2] +"&b1p4=" + shot1array[3]
         + "&b1p5=" +shot1array[4] + "&b1p6=" + shot1array[5]+"&b1p7=" + shot1array[6] + "&b1p8=" + shot1array[7]
         + "&b1p9=" + shot1array[8] + "&b1p10=" + shot1array[9] + "&b2p1=" + shot2array[0] + "&b2p2=" + shot2array[1]
