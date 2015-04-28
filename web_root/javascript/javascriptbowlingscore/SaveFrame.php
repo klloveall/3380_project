@@ -57,7 +57,7 @@ $created_date = date("Y-m-d H:i:s");
  }
 
 
- if (mysqli_query($_DB, $query) === TRUE) {
+ if (mysqli_query($_DB, $query) !== false) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error();
