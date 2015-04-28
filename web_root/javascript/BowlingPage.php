@@ -6,7 +6,7 @@ session_start();
 $_SESSION['user_id'] = "1";
 $loginID = $_SESSION['user_id'];
 $query = "SELECT game_number,id,notes FROM games WHERE user_id =".$loginID;
-$stmt = $conn -> query($query);
+$stmt = $_DB -> query($query);
 echo "Games: ";
 $dropdown = "<select id='Games'>";
 $dropdown .= "\r\n<option value='0'>Select a game:</option>";
@@ -18,7 +18,7 @@ echo $dropdown;
 echo "<br>";
 echo "<br>";
 $query = "SELECT name,id FROM centers";
-$stmt = $conn->query( $query );
+$stmt = $_DB->query( $query );
 echo "Bowling Center: "; 
 $dropdown = "<select id='bowlingcenters'>";
 $dropdown .= "\r\n<option value='0'>Select a Bowling Center:</option>";
@@ -30,7 +30,7 @@ echo $dropdown;
 echo "<br>";
 echo "<br>";
 $query = "SELECT custom_name,id FROM balls_users WHERE user_id =".$loginID;
-$stmt = $conn->query( $query );
+$stmt = $_DB->query( $query );
 echo "Ball 1: ";
 $dropdown = "<select id='Ball1'>";
 $dropdown .= "\r\n<option value='0'>Select a Ball:</option>";
@@ -42,7 +42,7 @@ echo $dropdown;
 echo "<br>";
 echo "<br>";
 $query = "SELECT custom_name,id FROM balls_users WHERE user_id =".$loginID;
-$stmt = $conn->query( $query );
+$stmt = $_DB->query( $query );
 echo "Ball 2: ";
 $dropdown = "<select id='Ball2'>";
 $dropdown .= "\r\n<option value='0'>Select a Ball:</option>";
@@ -65,7 +65,7 @@ echo $dropdown;
 echo "<br>";
 echo "<br>";
 $query = "SELECT name,id FROM pattern";
-$stmt = $conn->query( $query );
+$stmt = $_DB->query( $query );
 echo "Pattern: ";
 $dropdown = "<select id='Pattern'>";
 $dropdown .= "\r\n<option value='0'>Select a Pattern:</option>";
@@ -86,7 +86,7 @@ echo $dropdown;
 
 
 $query = "SELECT first_name,last_name FROM users WHERE id =".$loginID;
-$stmt = $conn->query( $query );
+$stmt = $_DB->query( $query );
 
 foreach ($stmt as $row)
     $username = "{$row['first_name']} {$row['last_name']}";
@@ -102,7 +102,7 @@ echo "</script>";
 
 
 
-$conn->close();
+$_DB->close();
 
 ?>
 <script>

@@ -49,11 +49,11 @@
  }
 
 
- if ($conn->query($sql) === TRUE) {
+ if ($_DB->query($sql) === TRUE) {
     echo "New record created successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $_DB->error;
 }
 
-$conn->close();
+$_DB->close();
 ?>
