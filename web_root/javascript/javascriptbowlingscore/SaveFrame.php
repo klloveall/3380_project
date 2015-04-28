@@ -40,7 +40,6 @@
  $b3p10 = trim($_POST["b3p10"]);
  $totalscore = trim($_POST["totalscore"]);
 $created_date = date("Y-m-d H:i:s");
- echo  $date;
  if($framecount != "10")
  {
  $sql = "INSERT INTO frames (game_id, user_id,lane,frame_number,center_id,pattern_id,timestamp,b1_ball_id,b1_release,b1_gutter,
