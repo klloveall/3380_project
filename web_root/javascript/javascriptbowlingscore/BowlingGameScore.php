@@ -135,13 +135,6 @@ echo $dropdown;
         <td><input type ="button" onclick = PostData() style="width:100px;height:40px" value ="Next Frame" /></td>
     </tr>
 </table>
-<select style ="top:450px;left:500px;height:40px;position:absolute">
-        <p> Gutter </p> 
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-</select>
-
-
 </div>
 <div id ="div1">
 </div>
@@ -196,7 +189,7 @@ function PostData() {
     // 2. Define what to do when XHR feed you the response from the server - Start
 
     // 3. Specify your action, location and Send to the server - Start
-    xhr.open('POST', '/SaveFrame.php');
+    xhr.open('POST', '/tracker/javascript/javascriptbowlingscore/SaveFrame.php');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("&userid=" + userid + "&centerid=" + centerid + "&gameid=" + gameid + "&framecount=" + currentframe + "&ballid=" + strball1
         + "&patternid=" + patternid + "&lane=" + lane + "&fingerreleaseid=" + fingerreleaseid
