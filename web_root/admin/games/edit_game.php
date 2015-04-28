@@ -28,7 +28,7 @@ if (isset($_GET['id'])) {
 			`time_bowled` = '" . $_POST['time_bowled'] . "',
 			`baker` = '" . $_POST['baker'] . "',
 			`user_id` = '" . $_POST['user_id'] . "',
-			`scrore` = '" . $_POST['scrore'] . "',
+			`score` = '" . $_POST['score'] . "',
             `notes` = '" . $_POST['notes'] . "'
         WHERE `id` = '" . $_GET['id'] . "'
         ";
@@ -83,7 +83,7 @@ if (isset($_GET['id'])) {
 			`game_number`,
 			`time_bowled`,
 			`baker`,
-			`scrore`,
+			`score`,
 			`notes`
 		FROM `games`
 		where `games`.`id` = '" . $_GET['id'] . "'
@@ -101,7 +101,7 @@ if (isset($_GET['id'])) {
 		$_POST['game_number'] = $data['game_number'];
 		$_POST['baker'] = $data['baker'];
 		$_POST['time_bowled'] = $data['time_bowled'];
-		$_POST['scrore'] = $data['scrore'];
+		$_POST['score'] = $data['score'];
         $_POST['notes'] = $data['notes'];
         require_once $_TEMPLATES['location'] . 'games/edit.tpl.php';
         exit();
@@ -119,7 +119,7 @@ function display_team_listing() {
 		`games`.`user_id`,
 		`games`.`time_bowled`,
 		`games`.`baker`,
-		`games`.`scrore`,
+		`games`.`score`,
         `games`.`notes`
       FROM
  	   `games`
