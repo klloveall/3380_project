@@ -1,7 +1,8 @@
 <div style="left:50%;top:50%; margin-top: -250px;
   margin-left: -120px;position:absolute">
 
-<?php include 'ConnectDatabase.php';
+<?php
+require_once '../../includes/includes.php';
 $loginID = $_SESSION['user_id'];
 $query = "SELECT game_number,id,notes FROM games WHERE user_id =".$loginID;
 $stmt = mysqli_query($_DB, $query);
