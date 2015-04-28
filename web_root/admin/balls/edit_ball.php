@@ -1,6 +1,7 @@
 <?php
 //
 require_once '../../includes/includes.php';
+require_login();
 
 if (isset($_GET['id'])) {
     if (isset($_GET['delete'])) {
