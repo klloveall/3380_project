@@ -4,6 +4,7 @@
 <?php
 require_once '../../includes/includes.php';
 $loginID = $_SESSION["user_id"];
+
 $query = "SELECT game_number,id,notes FROM games WHERE user_id =".$loginID;
 $stmt = mysqli_query($_DB, $query);
 echo "Games: ";
@@ -63,7 +64,7 @@ $query = "SELECT first_name,last_name FROM users WHERE id =".$loginID;
 $stmt = mysqli_query($_DB, $query);
 
 foreach ($stmt as $row)
-    $username = "{$row['first_name']} {$row['last_name']}";
+    $username = "{$row['first_name']} {$row['last_name']}";;
 
 
 
@@ -82,7 +83,6 @@ echo "</script>";
 <script>
 function startGameClick()
 {
-    window.alert(userid);
     var gameid = document.getElementById("Games");
     var strgameid = gameid.options[gameid.selectedIndex].value;
     var center = document.getElementById("bowlingcenters");
@@ -93,10 +93,6 @@ function startGameClick()
     var strlane = lane.options[lane.selectedIndex].value;
     var fingerrelease = document.getElementById("fingerrelease");
     var strfingerrelease = fingerrelease.options[fingerrelease.selectedIndex].value;
-    window.alert(userid);
-    window.alert('/tracker/javascript/javascriptbowlingscore/BowlingGameScore.php?'+'userid=' + userid  +'&username=' + username + '&gameid=' + strgameid +
-        '&centerid=' + strcenter + '&patternid=' + strpattern
-         + '&lane=' + strlane +'&fingerrelease=' + strfingerrelease);
     window.location.href = '/tracker/javascript/javascriptbowlingscore/BowlingGameScore.php?'+'userid=' + userid  +'&username=' + username + '&gameid=' + strgameid +
         '&centerid=' + strcenter  + '&patternid=' + strpattern
          + '&lane=' + strlane +'&fingerreleaseid=' + strfingerrelease;

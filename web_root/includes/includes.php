@@ -27,16 +27,17 @@ function escape_variable_recursive($var) {
 $_TEMPLATES['location'] = dirname(__FILE__) . '/../templates/';
 $_TEMPLATES['root_path'] = '/tracker/';
 
-if (!isset($_SESSION['user_id']) && isset($_POST['login_password'])) {
+if (!isset($_SESSION['user_id']) && isset($_POST['login_username'])) {
     $query = "
         SELECT
             `id`,
             `password`
         FROM `users`
-        WHERE `email` = '" . $_POST['login_email'] . "'";
+        WHERE `email` = '" . $_POST['login_username'] . "'";
     $result = mysqli_query($_DB, $query);
     $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
-    if (MD5($data['password']) == $_POST['login_password']) {
+    print_r($data);
+    if ($data['password'] == md5($_POST['login_password'])) {
         $_SESSION['user_id'] = $data['id'];
     } else {
         $_TEMPLATES['vars']['error'] = "Password incorrect";
@@ -46,7 +47,6 @@ if (!isset($_SESSION['user_id']) && isset($_POST['login_password'])) {
 }
 
 function require_login() {
-    echo "I'm running!";
     global $_TEMPLATES;
     print_r($_SESSION);
     if (!isset($_SESSION['user_id'])) {

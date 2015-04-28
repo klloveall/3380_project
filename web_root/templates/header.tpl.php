@@ -162,13 +162,13 @@
                         <ul class="parents">
 
                             <li><a href="/tracker/index.php">Home</a></li>
-<!--                            <li><a href="/tracker/admin/bowlers/view_bowlers.php">Bowlers <span class="caret"></span></a>
+                            <li><a href="/tracker/admin/events/view_user.php">Users<span class="caret"></span></a>
                                 <ul class="children">
-                                    <li><a href="/tracker/admin/bowlers/add_bowler.php">Add New Bowler</a></li>
-                                    <li><a href="/tracker/admin/bowlers/view_bowler.php">View Bowlers</a></li>
-                                    <li><a href="/tracker/admin/bowlers/edit_bowler.php">Edit Bowlers</a></li>
+                                    <li><a href="/tracker/admin/users/add_user.php">Add Users</a></li>
+                                    <li><a href="/tracker/admin/users/view_user.php">View Users</a></li>
+                                    <li><a href="/tracker/admin/users/edit_user.php">Edit Users</a></li>
                                 </ul>
-                            </li>-->
+                            </li>
                             <li><a href="/tracker/admin/oil_patterns/view_oil_pattern.php">Oil Patterns <span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/oil_patterns/add_oil_pattern.php">Add Oil Pattern</a></li>
@@ -197,25 +197,20 @@
                                     <li><a href="/tracker/admin/events/edit_event.php">Edit Event</a></li>
                                 </ul>
                             </li>
-							<li><a href="/tracker/admin/events/view_event.php">Users<span class="caret"></span></a>
-                                <ul class="children">
-                                    <li><a href="/tracker/admin/users/add_user.php">Add Users</a></li>
-                                    <li><a href="/tracker/admin/users/view_user.php">View Users</a></li>
-                                    <li><a href="/tracker/admin/users/edit_user.php">Edit Users</a></li>
-                                </ul>
-                            </li>
-							<li><a href="/tracker/admin/events/view_event.php">Sets<span class="caret"></span></a>
+                            <li><a href="/tracker/admin/events/view_event.php">Sets<span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/sets/add_set.php">Add Sets</a></li>
                                     <li><a href="/tracker/admin/sets/view_set.php">View Sets</a></li>
                                     <li><a href="/tracker/admin/sets/edit_set.php">Edit Sets</a></li>
                                 </ul>
                             </li>
-							<li><a href="/tracker/admin/events/view_event.php">Games<span class="caret"></span></a>
+                            <li><a href="/tracker/admin/events/view_event.php">Games<span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/games/add_game.php">Add Game</a></li>
                                     <li><a href="/tracker/admin/games/view_game.php">View Game</a></li>
                                     <li><a href="/tracker/admin/games/edit_game.php">Edit Game</a></li>
+                                    <li><a href="/tracker/admin/bowlers/stats.php">View Statistics</a></li>
+                                    <li><a href="/tracker/admin/upload_scores/upload_scores.php">Bulk Add Scores</a></li>
                                 </ul>
                             </li>
                             <li><a href="/tracker/admin/balls/view_ball.php">Balls<span class="caret"></span></a>
