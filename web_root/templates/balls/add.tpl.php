@@ -56,6 +56,7 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
    <option value="reactive_resin">Reactive Resin</option>
    <option value="urethane">Urethane</option>
    <option value="solid_reactive">Solid Reactive</option>
+   <option value="pearl_reactive">Pearl Reactive</option>
     <option value="hybird_reactive">Hybrid Reactive</option>
    <option value="particle">Particle</option>
 </select>
@@ -68,7 +69,6 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
 
     <input type="submit" name="submit" value="Add Bowling Ball" />
 </form>
-
 
 <?php
 require_once $_TEMPLATES['location'] . 'footer.tpl.php';
