@@ -1,4 +1,4 @@
-<?php
+	<?php
 require_once $_TEMPLATES['location'] . 'header.tpl.php';
 ?>
 
@@ -18,7 +18,7 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
 	<select name = "user_id">
 	<?php foreach ($_TEMPLATES['vars']['users'] AS $user): ?>
 		
-			<option value = "<?=$user['id']?>" > <?=$user['preferred_name']?> </option>
+			<option value = "<?=$user['id']?>" > <?=$user['id']?> </option>
   
 	<?php endforeach; ?>
 	</select>
