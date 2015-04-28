@@ -2,10 +2,17 @@
     <head>
         <link rel="stylesheet" href="http://www.uh.edu/css/main.css" />
         <link rel="stylesheet" href="http://www.uh.edu/saits/css/override.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="<?= $_TEMPLATES['root_path'] ?>css/override.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script src="http://www.uh.edu/js/modernizr.js"></script>
-        <script src="http://www.uh.edu/js/jquery.js"></script>
 
+        <script>
+            $(function () {
+                $("input[type='date']").datepicker();
+            });
+        </script>
         <title>UC Games Room | University of Houston</title>
     </head>
 
@@ -197,6 +204,8 @@
                                     <li><a href="/tracker/admin/events/edit_event.php">Edit Event</a></li>
                                 </ul>
                             </li>
+                             <li><a href="/tracker/admin/upload_scores/upload_scores.php">Upload Scores<span class="caret"></span></a>
+
                             <li><a href="/tracker/admin/balls/view_ball.php">Balls<span class="caret"></span></a>
                                 <ul class="children">
                                     <li><a href="/tracker/admin/balls/add_ball.php">Add Ball</a></li>
@@ -204,6 +213,7 @@
                                     <li><a href="/tracker/admin/balls/edit_ball.php">Edit Ball</a></li>
                                 </ul>
                             </li>
+                            <li><a href="/tracker/admin/bowlers/stats.php">View Stats</a></li>
                         </ul>
                     </nav>
                     <span class="dept">Cougar Bowling Club & Team</span>
