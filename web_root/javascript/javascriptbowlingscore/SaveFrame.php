@@ -53,7 +53,7 @@
  }
  else
  {
-     $sql = "UPDATE games SET scrore = $totalscore WHERE id = $gameid";
+     $sql = "UPDATE games SET score = $totalscore WHERE id = $gameid";
 
  }
 

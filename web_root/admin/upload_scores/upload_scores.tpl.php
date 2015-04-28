@@ -231,7 +231,7 @@ foreach ($xml->PinMasks as $xmlinfo):
 endforeach;
 $_SESSION["pinmask_count"]=$i;
 for ($a = 0; $a < $i; $a++) {
-    for ($b = 0; $b < 23; $b++) {
+    for ($b = 0; $b < 31; $b++) {
         $pin_masks = $pinmasks[$a][$b];
         $_SESSION["pinmasks"][$a][$b] = "$pin_masks";
     }

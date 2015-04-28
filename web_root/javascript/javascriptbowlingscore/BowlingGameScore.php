@@ -135,6 +135,11 @@ echo $dropdown;
         <td><input type ="button" onclick = PostData() style="width:100px;height:40px" value ="Next Frame" /></td>
     </tr>
 </table>
+<select style ="top:450px;left:500px;height:40px;position:absolute">
+        <p> Gutter </p> 
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+</select>
 
 
 </div>
