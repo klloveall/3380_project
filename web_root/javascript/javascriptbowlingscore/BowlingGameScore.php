@@ -260,7 +260,6 @@ function ChangePinStatus(pinobject)
             {
                 shotscore = parseInt(shotscore)+1;
                 pinnumber = parseInt(pinobject.getAttribute("id"));
-                window.alert("pinnumber" + pinnumber);
                 if(shotcount == 1)
                 {
                     shot1array[pinnumber-1] = "1";
