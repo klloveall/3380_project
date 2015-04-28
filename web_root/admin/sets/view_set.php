@@ -42,6 +42,7 @@ function display_team_listing() {
     global $_TEMPLATES, $_DB;
     $query = "
 	SELECT 
+		`sets`.`id`,
 		`sets`.`center_id`,
 		`sets`.`event_id`,
 		`sets`.`pattern_id`,

@@ -39,6 +39,7 @@ function display_team_listing() {
     global $_TEMPLATES, $_DB;
     $query = "
 	SELECT 
+		`games`.`id`,
 		`games`.`set_id`,
 		`games`.`user_id`,
 		`games`.`game_number`,
