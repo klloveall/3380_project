@@ -28,7 +28,6 @@ $_TEMPLATES['location'] = dirname(__FILE__) . '/../templates/';
 $_TEMPLATES['root_path'] = '/tracker/';
 
 if (!isset($_SESSION['user_id']) && isset($_POST['login_username'])) {
-    echo "Running here!";
     $query = "
         SELECT
             `id`,
@@ -48,7 +47,6 @@ if (!isset($_SESSION['user_id']) && isset($_POST['login_username'])) {
 }
 
 function require_login() {
-    echo "I'm running!";
     global $_TEMPLATES;
     print_r($_SESSION);
     if (!isset($_SESSION['user_id'])) {
