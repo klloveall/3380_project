@@ -3,6 +3,7 @@
 
 <?php
 require_once '../../includes/includes.php';
+require_login();
 $loginID = $_SESSION["user_id"];
 
 $query = "SELECT game_number,id,notes FROM games WHERE user_id =".$loginID;
