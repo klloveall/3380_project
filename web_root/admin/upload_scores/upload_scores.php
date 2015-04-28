@@ -1,5 +1,6 @@
 <?php
 require_once '../../includes/includes.php';
+require_login();
 require_once $_TEMPLATES['location'] . 'header.tpl.php';
 /*
  * To change this template, choose Tools | Templates

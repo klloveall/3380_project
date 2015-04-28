@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../../includes/includes.php';
+require_login();
 require_once $_TEMPLATES['location'] . 'header.tpl.php';
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);

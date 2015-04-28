@@ -1,6 +1,7 @@
 <?php
 
 require_once '../../includes/includes.php';
+require_login();
 
 if (isset($_POST['submit'])) {
     if (!$_POST['team_name']) {

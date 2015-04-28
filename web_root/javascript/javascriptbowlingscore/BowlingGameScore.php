@@ -13,12 +13,6 @@ echo "';";
 echo "var gameid='";
 echo $_GET["gameid"];
 echo "';";
-echo "var ball1id='";
-echo $_GET["ball1id"];
-echo "';";
-echo "var ball2id='";
-echo $_GET["ball2id"];
-echo "';";
 echo "var patternid='";
 echo $_GET["patternid"];
 echo "';";
@@ -34,6 +28,17 @@ echo "<h1>";
 echo $_GET["username"];
 echo "</h1>";
 echo "</div>";
+echo "<br>";
+echo "<br>";
+$query = "SELECT custom_name,id FROM balls_users WHERE user_id =".$_GET["userid"];
+$stmt = mysqli_query($_DB, $query);
+echo "Ball: ";
+$dropdown = "<select id='Ball'>";
+$dropdown .= "\r\n<option value='0'>Select a Ball:</option>";
+foreach ($stmt as $row)
+    $dropdown .= "\r\n<option value='{$row['id']}'>{$row['custom_name']}</option>";
+$dropdown .= "\r\n</select>";
+echo $dropdown;
 ?>
 
 <div style="left:50%;top:50%; margin-top: -250px;
@@ -130,6 +135,12 @@ echo "</div>";
         <td><input type ="button" onclick = PostData() style="width:100px;height:40px" value ="Next Frame" /></td>
     </tr>
 </table>
+<select style ="top:450px;left:500px;height:40px;position:absolute">
+        <p> Gutter </p> 
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+</select>
+
 
 </div>
 <div id ="div1">
@@ -153,7 +164,8 @@ echo "</div>";
     var displaycurrentframe = "1";
     var tenthframeshotcount = "1";
     var storescore = "0";
-
+    var ball = document.getElementById("Ball");
+    var strball1 = ball.options[ball.selectedIndex].value;
 function PostData() {
     var currentframe = framecount.toString();
     // 1. Create XHR instance - Start
@@ -175,7 +187,7 @@ function PostData() {
             if (xhr.status == 200 && xhr.status < 300) {
                 document.getElementById('div1').innerHTML = xhr.responseText;
                 if (framecount == 10)
-                    window.location.href = "/BowlingPage.php";
+                    window.location.href = "/tracker/javascript/javascriptbowlingscore/BowlingPage.php";
                 else
                     newFrame();
             }
@@ -186,8 +198,8 @@ function PostData() {
     // 3. Specify your action, location and Send to the server - Start
     xhr.open('POST', '/SaveFrame.php');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("&userid=" + userid + "&centerid=" + centerid + "&gameid=" + gameid + "&framecount=" + currentframe + "&ball1id=" + ball1id +
-        "&ball2id=" + ball2id + "&patternid=" + patternid + "&lane=" + lane + "&fingerreleaseid=" + fingerreleaseid
+    xhr.send("&userid=" + userid + "&centerid=" + centerid + "&gameid=" + gameid + "&framecount=" + currentframe + "&ballid=" + strball1
+        + "&patternid=" + patternid + "&lane=" + lane + "&fingerreleaseid=" + fingerreleaseid
         + "&b1p1=" + shot1array[0] + "&b1p2=" + shot1array[1] +"&b1p3=" + shot1array[2] +"&b1p4=" + shot1array[3]
         + "&b1p5=" +shot1array[4] + "&b1p6=" + shot1array[5]+"&b1p7=" + shot1array[6] + "&b1p8=" + shot1array[7]
         + "&b1p9=" + shot1array[8] + "&b1p10=" + shot1array[9] + "&b2p1=" + shot2array[0] + "&b2p2=" + shot2array[1]
@@ -245,7 +257,6 @@ function ChangePinStatus(pinobject)
                 }
                 else
                 {
-                    window.alert("Tenth Frame");
                     document.getElementById("Scorebox" + scoreboxcount + "Shot" + tenthframeshotcount).innerHTML = "X";
                     tenthframeshotcount = parseInt(tenthframeshotcount) + 1;
                 }
@@ -254,7 +265,6 @@ function ChangePinStatus(pinobject)
             }
             else
             {
-                window.alert(shotcount );
                 shotscore = parseInt(shotscore)+1;
                 pinnumber = parseInt(pinobject.getAttribute("id"));
                 window.alert("pinnumber" + pinnumber);
@@ -275,12 +285,10 @@ function ChangePinStatus(pinobject)
     {
             if(framecount < 10)
             {
-               window.alert("The Framecount" + framecount);
                onethroughnineframe();
             }
             else if(framecount == 10)
             {
-                window.alert("The Framecount" + framecount + "Enter tenth frame function");
                 tenthframe();
             }
             else
@@ -373,7 +381,6 @@ function ChangePinStatus(pinobject)
             shotscore = "0";
             if(strikearray[2] == "10")
             {
-                window.alert("Entered strike function");
                 if(framecount < 10)
                         newFrame();
                     else if(framecount == 10)
@@ -383,7 +390,6 @@ function ChangePinStatus(pinobject)
             }
             else
             {
-                window.alert("No strike 1");
                 document.getElementById("Scorebox" + scoreboxcount + "Shot1").innerHTML = strikearray[2];
                 document.getElementById("Scorebox" + scoreboxcount +"Shot2").innerHTML = "0";
                 shotcount++;
@@ -393,10 +399,8 @@ function ChangePinStatus(pinobject)
         {
             strikearray[3] = shotscore;
             shotscore = "0";
-            window.alert(strikearray[3]); 
             if(strikearray[3] == "10")
             {
-                window.alert("Entered strike function"); 
                 framescore = parseInt(strikearray[1]) + parseInt(strikearray[2]) + parseInt(strikearray[3]);
                 totalscore = parseInt(totalscore) + parseInt(framescore);
                 document.getElementById("TotalScoreBox").innerHTML = totalscore;
@@ -408,7 +412,6 @@ function ChangePinStatus(pinobject)
                 {
                     for(var i=0; i<4; i++)
                     strikearray[i] = "0";
-                    window.alert("Game OVer");
                     newFrame(); 
                 }
                 else
@@ -427,13 +430,11 @@ function ChangePinStatus(pinobject)
             }
             else
             {
-                window.alert("No strike 2");
                 if(sparearray[0] == "Spare")
                 {
                     strikearray[2] = "10";
                     strikearray[3] = "0";
                     framescore = parseInt(strikearray[1]) + parseInt(strikearray[2]) + parseInt(strikearray[3]);
-                    window.alert(framescore);
                     totalscore = parseInt(totalscore) + parseInt(framescore);
                     document.getElementById("TotalScoreBox").innerHTML = totalscore;
                     if(framecount < 10)
@@ -467,7 +468,6 @@ function ChangePinStatus(pinobject)
     }
     function onethroughnineframe()
     {
-        window.alert("Shot Count: " + shotcount);
                 if(shotcount == 1)
                 {
                     if(sparearray[0] == "Spare")
@@ -476,16 +476,13 @@ function ChangePinStatus(pinobject)
                     }
                     else if(strikearray[0] == "Strike")
                     {
-                        window.alert("Enter strike statement");
                         if(strikearray[1] == "0")
                         {
-                            window.alert("Enter strike if statement");
                             strikearray[1] = shotscore;
                             shotscore = "0";
                         }
                         else
                         {
-                            window.alert("Entering strike function");
                             Strike();
                         }
                     }
@@ -504,14 +501,12 @@ function ChangePinStatus(pinobject)
                     {
                         if(strikearray[0] == "Strike")
                         {
-                            window.alert("Entering strike function");
                             Strike();
                         }
 
                     }
                     else if(strikearray[0] == "Strike")
                     {
-                        window.alert("Entering strike function");
                         Strike();
                     }
                     else
@@ -528,8 +523,7 @@ function ChangePinStatus(pinobject)
                     window.alert("You have exceeded 2 shots");
     }
     function tenthframe()
-    {
-        window.alert("Entered tenthframe() function"); 
+    { 
         if(shotcount == 1)
         {
              if(sparearray[0] == "Spare")
@@ -538,10 +532,8 @@ function ChangePinStatus(pinobject)
              }
              else if(strikearray[0] == "Strike")
              {
-                window.alert("Enter strike statement");
                 if(strikearray[1] == "0")
                 {
-                    window.alert("Enter strike if statement");
                     strikearray[1] = shotscore;
                     shotscore = "0";
                     newFrame();
@@ -549,7 +541,6 @@ function ChangePinStatus(pinobject)
                 else
                 {
                     window.alert("Shotscore: " + shotscore);
-                    window.alert("Entering strike function");
                     Strike();
                 }
               }
@@ -567,7 +558,6 @@ function ChangePinStatus(pinobject)
             {
                 if(strikearray[0] == "Strike")
                 {
-                   window.alert("Entering strike function");
                    Strike();
                 }
                 else
@@ -575,7 +565,6 @@ function ChangePinStatus(pinobject)
             }
             else if(strikearray[0] == "Strike")
             {
-                window.alert("Entering strike function");
                 Strike();
             }
             else
