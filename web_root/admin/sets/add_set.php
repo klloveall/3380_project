@@ -1,5 +1,6 @@
 <?php
   require_once '../../includes/includes.php';
+require_login();
  
 if (isset($_POST['submit'])) {
 

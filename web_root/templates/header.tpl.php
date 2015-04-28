@@ -214,6 +214,7 @@
                                 </ul>
                             </li>
                             <li><a href="/tracker/admin/bowlers/stats.php">View Stats</a></li>
+                            <li><a href="/tracker/javascript/javascriptbowlingscore/BowlingPage.php">Live Add Games</a></li>
                         </ul>
                     </nav>
                     <span class="dept">Cougar Bowling Club & Team</span>

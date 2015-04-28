@@ -1,5 +1,6 @@
 <?php
 require_once '../../includes/includes.php';
+require_login();
 if (isset($_GET['id'])) {
     if (isset($_GET['delete'])) {
         $query = "DELETE FROM `sets` WHERE `id` = '" . $_GET['id'] . "'";
