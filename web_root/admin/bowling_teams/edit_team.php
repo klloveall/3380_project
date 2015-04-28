@@ -6,11 +6,17 @@ if (isset($_GET['id'])) {
     if (isset($_GET['delete'])) {
         $users = "DELETE FROM `teams_users` WHERE `team_id` = '" . $_GET['id'] . "'";
         $query = "DELETE FROM `teams` WHERE `id` = '" . $_GET['id'] . "'";
-        mysqli_query($_DB, $query);
+        $result=mysqli_query($_DB, $users);
+        $res=mysqli_query($_DB, $query);
         if ($result === false) {
             echo "DB ERROR: " . mysqli_error($_DB);
             exit();
-        } else {
+        }
+        else if($res === false){
+            echo "DB ERROR: " . mysqli_error($_DB);
+            exit();
+        }
+        else {
             $_TEMPLATES['vars']['success'] = "Bowling team successfully deleted";
             display_team_listing();
         }
