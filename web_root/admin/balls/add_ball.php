@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
 //    move_uploaded_file($_FILES['userfile']['tmp_name'], '../../uploads/');
 
     $query = "
-        INSERT INTO `ball` (
+        INSERT INTO `balls` (
             `name`,
             `manufacturer`,
             `filepath`,
@@ -27,8 +27,14 @@ if (isset($_POST['submit'])) {
             `stock`,
             `notes`
         ) VALUES (
-            '" . $_POST['ball_name'] . "',
-            '" . $_POST['file'] . "',
+        '" . $_POST['ball_name'] . "',
+        '" . $_POST['manufacturer_id'] . "',
+    '" . $_POST['filepath'] . "',
+    '" . $_POST['symmetric'] . "',
+    '" . $_POST['rg'] . "',
+    '" . $_POST['differential'] . "',   
+    '" . $_POST['color'] . "',
+    '" . $_POST['stock'] . "',
             '" . $_POST['notes'] . "'
         )";
     $result = mysqli_query($_DB, $query);

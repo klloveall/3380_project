@@ -4,7 +4,7 @@ require_once '../../includes/includes.php';
 
 if (isset($_GET['id'])) {
     if (isset($_GET['delete'])) {
-        $query = "DELETE FROM `ball` WHERE `id` = '" . $_GET['id'] . "'";
+        $query = "DELETE FROM `balls`  WHERE `id` = '" . $_GET['id'] . "'";
         mysqli_query($_DB, $query);
         if ($result === false) {
             echo "DB ERROR: " . mysqli_error($_DB);
@@ -16,8 +16,8 @@ if (isset($_GET['id'])) {
     }
 
     if (isset($_POST['submit'])) {
-        if (!$_POST['pattern_name']) {
-            $errors['pattern_name'] = "Pattern name required";
+        if (!$_POST['ball_name']) {
+            $errors['ball_name'] = "Ball name required";
         }
         if (isset($errors)) {
             foreach ($errors as $field => $error_message) {
@@ -34,16 +34,16 @@ if (isset($_GET['id'])) {
         UPDATE `balls` SET 
             
             
-        'name'='" .$_POST['ball_name']."',
-        'filepath'= '" . $_POST['file']."',
-         'manufacturer'= '" .  $_POST['manufacturer']."',
-         'symmetric'= '" .  $_POST['symmetric']."',
-          'rg'= '" . $_POST['rg']."',
-          'differential'= '" . $_POST['differential']."',
-          'color'= '" . $_POST['color']."',
-          'stock'= '" . $_POST['stock']."',
+        `name`='" .$_POST['ball_name']."',
+        `filepath`= '" . $_POST['filepath']."',
+         `manufacturer`= '" .  $_POST['manufacturer_id']."',
+         `symmetric`= '" .  $_POST['symmetric']."',
+          `rg`= '" . $_POST['rg']."',
+         `differential`= '" . $_POST['differential']."',
+          `color`= '" . $_POST['color']."',
+          `stock`= '" . $_POST['stock']."',
         `notes` = '" . $_POST['notes'] . "',
-        WHERE `id` = '" . $_GET['id'] . "'
+        WHERE `id`    = '" . $_GET['id'] . "'
         ";
         $result = mysqli_query($_DB, $query);
         if ($result === false) {
@@ -75,7 +75,7 @@ if (isset($_GET['id'])) {
         $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $_POST['ball_name'] = $data['name'];
         $_POST['filepath'] = $data['filepath'];
-        $_POST['manufacturer'] = $data['manufacturer'];
+        $_POST['manufacturer_id'] = $data['manufacturer'];
         $_POST['symmetric'] = $data['symmetric'];
         $_POST['rg'] = $data['rg'];
         $_POST['differential'] = $data['differential'];
@@ -95,7 +95,7 @@ function display_ball_listing() {
     $query = "
         SELECT
             `id`,
-            `name`,
+               `name`,
             `manufacturer`,
             `filepath`,
             `symmetric`,

@@ -8,9 +8,9 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
     <h2><a href='?id=<?=$ball['id']?>'><?=$ball['name']?></a></h2>
     <p>Notes: <?=$ball['notes']?></p>
     <p>
-        <a href="view_bowling_ball.php?id=<?=$ball['id']?>">View bowling ball</a><br />
-        <a href="edit_bowling_ball.php?id=<?=$ball['id']?>">Edit bowling ball</a><br />
-        <a class="delete" href="edit_bowling_ball.php?id=<?=$ball['id']?>&delete=true">Delete bowling ball</a><br />
+        <a href="view_ball.php?id=<?=$ball['id']?>">View bowling ball</a><br />
+        <a href="edit_ball.php?id=<?=$ball['id']?>">Edit bowling ball</a><br />
+        <a class="delete" href="edit_ball.php?id=<?=$ball['id']?>&delete=true">Delete bowling ball</a><br />
     </p>
 
 <?php endforeach; ?>

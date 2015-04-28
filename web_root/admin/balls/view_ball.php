@@ -5,6 +5,7 @@ require_once '../../includes/includes.php';
 if (isset($_GET['id'])) {
     $query = "
         SELECT
+            `id`,
             `name`,
             `manufacturer`,
             `filepath`,
@@ -14,7 +15,7 @@ if (isset($_GET['id'])) {
             `color`,
             `stock`,
             `notes`
-        FROM   `pattern`
+        FROM   `balls`
         WHERE `id` = '" . $_GET['id'] . "'
         ";
     $result = mysqli_query($_DB, $query);
@@ -25,7 +26,7 @@ if (isset($_GET['id'])) {
     $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $_POST['ball_name'] = $data['name'];
         $_POST['filepath'] = $data['filepath'];
-        $_POST['manufacturer'] = $data['manufacturer'];
+        $_POST['manufacturer_id'] = $data['manufacturer'];
         $_POST['symmetric'] = $data['symmetric'];
         $_POST['rg'] = $data['rg'];
         $_POST['differential'] = $data['differential'];
@@ -44,7 +45,7 @@ function display_balls_listing() {
     $query = "
         SELECT
             `id`,
-            `name`,
+               `name`,
             `manufacturer`,
             `filepath`,
             `symmetric`,
