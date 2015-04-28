@@ -219,6 +219,7 @@
                                     <li><a href="/tracker/admin/games/edit_game.php">Edit Game</a></li>
                                     <li><a href="/tracker/admin/bowlers/stats.php">View Statistics</a></li>
                                     <li><a href="/tracker/admin/upload_scores/upload_scores.php">Bulk Add Scores</a></li>
+                                    <li><a href="/tracker/javascript/javascriptbowlingscore/BowlingPage.php">Live Add Scores</a></li>
                                 </ul>
                             </li>
                             <li><a href="/tracker/admin/balls/view_ball.php">Balls<span class="caret"></span></a>
