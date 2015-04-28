@@ -6,14 +6,14 @@ require_once $_TEMPLATES['location'] . 'header.tpl.php';
 
 <form action="" method="post">
 
+ 
  <label for="name"> Ball User ID:</label>
-	<select name = "ball_user_name">
-	<?php foreach ($_TEMPLATES['vars']['balls'] AS $balls): ?>
-		
-			<option value = "<?=$balls['id']?>" > <?=$balls['id']?> </option>
-  
-	<?php endforeach; ?>
-	</select>
+    <input type="text" maxlength="50" name="ball_user_name" value="<?=$_POST['ball_user_name']?>" />
+    <? if (isset($_TEMPLATES['vars']['form_errors']['user_id'])): ?>
+        <span class="error"><?= $_TEMPLATES['vars']['form_errors']['ball_user_name'] ?></span>
+    <? endif; ?>
+
+ 
   <label for="name"> User ID:</label>
     <input type="text" maxlength="50" name="user_id" value="<?=$_POST['user_id']?>" />
     <? if (isset($_TEMPLATES['vars']['form_errors']['user_id'])): ?>
