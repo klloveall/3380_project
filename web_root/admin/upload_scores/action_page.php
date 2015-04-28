@@ -21,6 +21,7 @@ foreach($_POST as $name => $value) {
 //print_r($names);
 
 // change names with underscore
+
 $i=$_SESSION["gamecount"];
 for($a=0; $a<$i; $a++){
     $player_name[$a]=$_SESSION["games"][$a][8];
@@ -49,6 +50,7 @@ $i=$_SESSION["stat_count"];
 for($a=0; $a<$i; $a++){
     $statistic[$a]=$_SESSION["statisticgames"][$a][0];
 }
+
 //echo $_SESSION["statisticgames"][443][0];
 $result2 = array_unique($statistic);
 //print_r($result2);
@@ -71,7 +73,6 @@ foreach($sets as $key=>$value):
     $result_two = mysqli_query($_DB, $insert_two);
     $sets[$key]=mysqli_insert_id($_DB);
 endforeach;
-
 
 // GAMES TABLE
 // Retrieve all game table info
@@ -158,7 +159,7 @@ for ($y = 1; $y < 31; $y++) {
 }
 }
 
-$i = 3; // set to $_SESSION["pinmask_count"] for all frames
+$i=$_SESSION["pinmask_count"];
 for ($z = 0; $z < $i; $z++) {
     $game_id = $_SESSION["pinmasks"][$z][0];
     $indtwo=$user_name[$z];
