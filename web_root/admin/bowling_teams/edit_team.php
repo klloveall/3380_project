@@ -31,6 +31,7 @@ if (isset($_GET['id'])) {
         $query = "
         UPDATE `teams` SET 
             `name` = '" . $_POST['team_name'] . "',
+            `owner_id` = '" . $_POST['owner'] . "',
             `notes` = '" . $_POST['notes'] . "'
         WHERE `id` = '" . $_GET['id'] . "'
         ";
@@ -39,12 +40,42 @@ if (isset($_GET['id'])) {
             echo "DB ERROR: " . mysqli_error($_DB);
             exit();
         }
+      $query_delete = "
+        DELETE
+        FROM `teams_users`
+        WHERE `team_id` = '" . $_GET['id'] . "'
+        ";
+        $result_delete = mysqli_query($_DB, $query_delete);
+        if ($result_delete === false) {
+            echo "DB ERROR: " . mysqli_error($_DB);
+            exit();
+        }
+    $teamid=$_GET['id'];
+    $values = $_POST['bowlers'];
+    if(isset($_POST['bowlers'])){
+    foreach($values as $v){
+    $bowlers = "
+        INSERT INTO `teams_users` (
+            `team_id`,
+            `user_id`
+        ) VALUES (
+            '" . $teamid . "',
+            '" .$v. "'
+        )";
+    $result_bowlers = mysqli_query($_DB, $bowlers);
+    if ($result === false) {
+        echo "DB ERROR: " . mysqli_error($_DB);
+        exit();
+    }
+    }
+    }
         $_TEMPLATES['vars']['success'] = "Bowling Team edited successfully";
         display_team_listing();
     } else {  // Display single listing edit form
         $query = "
         SELECT
             `name`,
+            `owner_id`,
             `notes`
         FROM   `teams`
         WHERE `id` = '" . $_GET['id'] . "'
@@ -56,9 +87,43 @@ if (isset($_GET['id'])) {
         }
         $data = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $_POST['team_name'] = $data['name'];
-//        $_POST['owner'] = $data['owner_id'];
+        $_POST['owner'] = $data['owner_id'];
         $_POST['notes'] = $data['notes'];
-        require_once $_TEMPLATES['location'] . 'bowling_teams/edit.tpl.php';
+
+        $query_user = "
+        SELECT
+        `users`.`preferred_name` AS `name`,
+        `users`.`id`
+        FROM
+        `users`
+        WHERE 1
+        ";
+        $results_user = mysqli_query($_DB, $query_user);
+        if ($results_user === false) {
+            echo "Error reading event: " . mysqli_error($_DB);
+            exit();
+        }
+        while ($data_user = mysqli_fetch_array($results_user, MYSQLI_ASSOC)) {
+            $_TEMPLATES['vars']['bowlers'][] = $data_user;
+        }
+
+        $query_bowler = "
+        SELECT
+        `teams_users`.`user_id`
+        FROM
+        `teams_users`
+        WHERE `team_id`= '" . $_GET['id'] . "'
+        ";
+        $results_bowler = mysqli_query($_DB, $query_bowler);
+        if ($results_bowler === false) {
+            echo "Error reading event: " . mysqli_error($_DB);
+            exit();
+        }
+        while ($data_bowler = mysqli_fetch_array($results_bowler, MYSQLI_ASSOC)) {
+             $_POST['users'][]= $data_bowler['user_id'];
+        }
+
+        require_once($_TEMPLATES['location'] . 'bowling_teams/edit.tpl.php');
         exit();
     }
 } else {

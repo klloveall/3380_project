@@ -1,10 +1,10 @@
 <?php
 require_once $_TEMPLATES['location'] . 'header.tpl.php';
 ?>
-
 <h1>Add New Bowling Team</h1>
 
 <form action="" method="post">
+    <fieldset>
     <label for="name">Bowling Team Name:</label>
     <input type="text" maxlength="50" name="team_name" 
 value="<?=$_POST['team_name']?>" />
@@ -27,8 +27,22 @@ value="<?=$_POST['owner']?>" />
     <? if (isset($_TEMPLATES['vars']['form_errors']['notes'])): ?>
         <span class="error"><?= $_TEMPLATES['vars']['form_errors']['notes'] ?></span>
     <? endif; ?>
+    
+    Select Owner:
+        <select name="owner">
+            <?php foreach ($_TEMPLATES['vars']['bowlers'] as $bowlers): ?>
+                <option value="<?=$bowlers['id']?>"><?=$bowlers['name']?></option>
+            <?php endforeach; ?>
+        </select>
+    <br> <br>
+    Select Bowlers:
+        <select name="bowlers[]" multiple="multiple">
+            <?php foreach ($_TEMPLATES['vars']['bowlers'] as $bowlers): ?>
+                <option value="<?=$bowlers['id']?>"><?=$bowlers['name']?></option>
+            <?php endforeach; ?>
+        </select>
 
-<input type="submit" name="submit" value="Add Team" />
+    <input type="submit" name="submit" value="Add Team" /></fieldset>
 </form>
 
 <?php
